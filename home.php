@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 
-<?php include("cmp/head.html") ?>
+<?php include("cmp/head.php") ?>
 
 <body class="body-scroll d-flex flex-column h-100 menu-overlay">
 
@@ -134,7 +134,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <a :href="'/game?id='+game.ID" class="card-footer">
+                            <a :href="'game?id='+game.ID" class="card-footer">
                                 <div class="row">
                                     <div class="col">
                                         <p class="text-dark">{{game.name}}</p>
@@ -266,7 +266,7 @@
                                 <div class="col pl-0">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="small"><a :href="'/game?id='+game.ID" class="text-dark">{{game.name}}</a> </p>
+                                            <p class="small"><a :href="'game?id='+game.ID" class="text-dark">{{game.name}}</a> </p>
                                         </div>
                                         <div class="col-auto">
                                             <p class="small vm">
@@ -416,7 +416,7 @@
             methods: {
                 openCat: function(cat){
                     var _e = this
-                    fetch("/API/LIST/games?cat="+cat,{
+                    fetch("API/LIST/games?cat="+cat,{
                         headers : { 
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
@@ -436,7 +436,7 @@
             },
             created() {
                 var _e = this
-                fetch("/API/LIST/categories",{
+                fetch("API/LIST/categories",{
                     headers : { 
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
@@ -451,7 +451,7 @@
                         _e.categories = json.response
                     } else {
                         if(json.response.includes("Not auth")){
-                            location.href = "/login"
+                            location.href = "login"
                         }
                     }
                     $("#mygames").prop("checked", true);

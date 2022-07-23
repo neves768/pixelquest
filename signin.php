@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 
-<?php include("cmp/head.html") ?>
+<?php include("cmp/head.php") ?>
 
 <body class="d-flex flex-column h-100">
     <div class="container-fluid h-100 loader-display">
@@ -26,7 +26,7 @@
     <header class="header">
         <div class="row">
             <div class="col-auto px-0">
-                <a href="/" class="btn menu-btn btn-link text-dark">
+                <a href="/pixelquest/" class="btn menu-btn btn-link text-dark">
                     <svg xmlns='http://www.w3.org/2000/svg' class="icon-size-24" viewBox='0 0 512 512'>
                         <title>ionicons-v5-a</title>
                         <polyline points='244 400 100 256 244 112' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />
@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <a href="/signup" class="link">Create Account</a>
+                    <a href="signup" class="link">Create Account</a>
                 </div>
             </div>
         </div>
@@ -105,12 +105,12 @@
             var user = $("#user").val(),
                 pass = $("#passw").val();
             if(user != "" && pass != ""){
-                $.post("/API/AUT/login", {u: user, p: pass}).done(function(data){
+                $.post("API/AUT/login", {u: user, p: pass}).done(function(data){
                     $(".feedbackCaption").text(data.response);
                     setTimeout((data) => {
                         $(".feedbackCaption").text("");
                         if(data.success){
-                            location.href = "/home"
+                            location.href = "home"
                         }
                     }, 3000, data);
                 })

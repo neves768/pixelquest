@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" class="h-100">
-<?php include("cmp/head.html") ?>
+<?php include("cmp/head.php") ?>
 
 <body class="d-flex flex-column h-100 menu-overlay">
     <?php include("cmp/leftmenu.html") ?>
@@ -8,7 +8,7 @@
         <header class="header">
             <div class="row">
                 <div class="col-auto px-0">
-                    <a href="/home" class="btn btn-link text-dark">
+                    <a href="home" class="btn btn-link text-dark">
                         <svg xmlns='http://www.w3.org/2000/svg' class="icon-size-24" viewBox='0 0 512 512'>
                             <title>ionicons-v5-a</title>
                             <polyline points='244 400 100 256 244 112' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />

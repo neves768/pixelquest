@@ -10,20 +10,20 @@
     </IfModule>
 	Options -Indexes
 	RewriteEngine On
-	RewriteBase /
+	RewriteBase /pixelquest/
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	
 	# Pagina Principal
-	RewriteRule ^home$ /home.php [NC,L]
-	RewriteRule ^profile$ /profile.php [NC,L]
-	RewriteRule ^login$ /signin.php [NC,L]
-	RewriteRule ^signup$ /signup.php [NC,L]
-	RewriteRule ^profile$ /profile.php [NC,L]
-	RewriteRule ^game$ /gamePage.php [NC,L]
+	RewriteRule ^home$ home.php [NC,L]
+	RewriteRule ^profile$ profile.php [NC,L]
+	RewriteRule ^login$ signin.php [NC,L]
+	RewriteRule ^signup$ signup.php [NC,L]
+	RewriteRule ^profile$ profile.php [NC,L]
+	RewriteRule ^game$ gamePage.php [NC,L]
     
 	# API v2
-	RewriteRule ^API/([A-Z]{1,4})/(.*)$ /API/init.php?branch=$1&path=$2 [QSA]
+	RewriteRule ^API/([A-Z]{1,4})/(.*)$ API/init.php?branch=$1&path=$2 [QSA]
 
 	# SSL TLS
 	RewriteCond %{HTTP_HOST} ^neves768\.com

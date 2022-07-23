@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 
-<?php include("cmp/head.html") ?>
+<?php include("cmp/head.php") ?>
 
 <body class="d-flex flex-column h-100 menu-overlay">
     <?php include("cmp/leftmenu.html") ?>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 
-<?php include("cmp/head.html") ?>
+<?php include("cmp/head.php") ?>
 
 <body class="body-scroll d-flex flex-column h-100 menu-overlay">
     <?php include("cmp/leftmenu.html") ?>
@@ -123,7 +123,7 @@
                         
                     </div>
                     
-                    <a href="buynow.html" class="mt-4 btn btn-info btn-block btn-lg">Jogar</a>
+                    <a href="#" class="mt-4 btn btn-info btn-block btn-lg">Jogar</a>
                 </div>
             </div>
         </div>
@@ -168,7 +168,7 @@
             methods: {
                 loadRound: function(gameID, round){
                     var _e = this
-                    fetch("/API/GAM/round?id="+<?=$_GET['id'] ?? -1?>+"&round=1",{
+                    fetch("API/GAM/round?id="+<?=$_GET['id'] ?? -1?>+"&round=1",{
                         headers : { 
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
@@ -183,16 +183,16 @@
                             _e.currentRound = json.response
                         } else {
                             if(json.response.includes("Not auth")){
-                                location.href = "/login"
+                                location.href = "login"
                             }
                         }
                     });
-                    _e.image = '/API/GAM/image?id=<?=$_GET['id'] ?? -1?>&round=1'
+                    _e.image = 'API/GAM/image?id=<?=$_GET['id'] ?? -1?>&round=1'
                 }
             },
             created() {
                 var _e = this
-                fetch("/API/GAM/gameDt?id="+<?=$_GET['id'] ?? -1?>,{
+                fetch("API/GAM/gameDt?id="+<?=$_GET['id'] ?? -1?>,{
                     headers : { 
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
@@ -207,7 +207,7 @@
                         _e.game = json.response
                     } else {
                         if(json.response.includes("Not auth")){
-                            location.href = "/login"
+                            location.href = "login"
                         }
                     }
                     $("#mygames").prop("checked", true);
