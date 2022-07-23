@@ -1,0 +1,40 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_headers.c>
+		Header always append X-Frame-Options SAMEORIGIN
+		Header set X-XSS-Protection "1; mode=block"
+		Header set X-Content-Type-Options nosniff
+		SetEnvIf Origin "http(s)?://(.+\.)?(pixelquestapp\.tk|pixelquest.nevesygaming\.com|nevesygaming\.com)(:\d{1,5})?$" AccessControlAllowOrigin=$0
+        Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+        Header add Access-Control-Allow-Credentials true
+        Header merge Vary Origin
+    </IfModule>
+	Options -Indexes
+	RewriteEngine On
+	RewriteBase /
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	
+	# Pagina Principal
+	RewriteRule ^home$ /home.php [NC,L]
+	RewriteRule ^profile$ /profile.php [NC,L]
+	RewriteRule ^login$ /signin.php [NC,L]
+	RewriteRule ^signup$ /signup.php [NC,L]
+	RewriteRule ^profile$ /profile.php [NC,L]
+    
+	# API v2
+	RewriteRule ^API/([A-Z]{1,4})/(.*)$ /API/init.php?branch=$1&path=$2 [QSA]
+
+	# SSL TLS
+	RewriteCond %{HTTP_HOST} ^neves768\.com
+	RewriteCond %{SERVER_PORT} 80
+	RewriteRule ^(.*)$ https://neves768.com/$1 [R,L]
+		
+	ErrorDocument 404 /index.php
+	
+</IfModule>
+
+# Deny access to .gitignore
+<Files .gitignore>
+	Order allow,deny
+	Deny from all
+</Files>
