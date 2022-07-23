@@ -1,0 +1,19 @@
+1 - Link para vídeo explicando a Modelagem de Dados (DER)
+https://github.com/neves768/pixelquest/tree/master/_entrega/DER.mp4
+
+2 - Link para vídeo mostrando que terminou todos os exercícios dos níveis 1 , 2 e 3 do https://www.beecrowd.com.br/ e explicando pelo menos 1 exemplo de cada nível(3 explicações ao todo).
+
+https://github.com/neves768/pixelquest/tree/master/_entrega/beecrowd.mp4
+
+3- Link do projeto final online 
+https://neves768.com/pixelquest
+
+4 - Link para vídeo explicando o projeto final.
+https://github.com/neves768/pixelquest/tree/master/_entrega/explicacao.mp4
+
+
+Todos os vídeos, etc em: 
+https://github.com/neves768/pixelquest/tree/master/_entrega
+
+Link do repo:
+https://github.com/neves768/pixelquest
