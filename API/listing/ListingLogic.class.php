@@ -18,17 +18,17 @@ class ListingLogic{
 	}
 
     public function getMyGames(){
-        $sql = "SELECT `ID`, `categID`, `name`, `description`, `listingType`, `hasPass`, `owner` FROM `games` WHERE `owner` = :ownerHash;";
+        $sql = "SELECT `ID`, `categID`, `name`, `description`, `listingType`, `rounds`, `icon`, `hasPass`, (SELECT `user` FROM `users` WHERE `hash` = :ownerHash LIMIT 1) as `owner` FROM `games` WHERE `owner` = :ownerHash;";
 		$sql = $this->pdoDB->prepare($sql);
-		if($sql->execute(["catID" => $cat])){
+		if($sql->execute(["ownerHash" => $this->auth->myHash()])){
 			return [$sql->fetchAll(\PDO::FETCH_OBJ), true];
 		}
 		return [[], false];
     }
 
-    public function getCategory($cat){
-        if($cat == 0) return getMyGames();
-		$sql = "SELECT `ID`, `categID`, `name`, `description`, `listingType`, `hasPass`, `owner` FROM `games` WHERE categID = :catID;";
+    public function getCategoryGames($cat){
+        if($cat == 0) return $this->getMyGames();
+		$sql = "SELECT `ID`, `categID`, `name`, `description`, `listingType`, `rounds`, `icon`, `hasPass`, (SELECT `user` FROM `users` b WHERE `hash` = a.owner LIMIT 1) as `owner` FROM `games` a WHERE categID = :catID;";
 		$sql = $this->pdoDB->prepare($sql);
 		if($sql->execute(["catID" => $cat])){
 			return [$sql->fetchAll(\PDO::FETCH_OBJ), true];

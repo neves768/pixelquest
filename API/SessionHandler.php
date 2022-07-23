@@ -38,7 +38,7 @@ class SessionHandler {
 	}
 
     public function myHash(){
-        if($this->isActive()) return false;
+        if(!$this->isActive()) return false;
 		$q = $this->pdoDB->prepare("SELECT `userhash` FROM `sessions` WHERE `hash` = :hash LIMIT 1");
         $q->execute(['hash' => $this->isActive()]);
 		if($q->rowCount() == 1){
@@ -91,7 +91,7 @@ class SessionHandler {
 			$agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 			
 			$query = "INSERT INTO `sessions` (`ID`, `hash`, `userhash`, `expiration`, `ip`, `agent`, `cookie`) VALUES (:userID, :hash, :uHash, NOW() + INTERVAL 30 MINUTE, :ip, :agent, '')
-			ON DUPLICATE KEY UPDATE `userhash`= :uHash, `hash` = :hash, `expiration` = NOW() + INTERVAL 30 MINUTE, `ip` = :ip, `agent` = :agent;";
+			ON DUPLICATE KEY UPDATE `userhash`= :uHash, `hash` = :hash, `expiration` = NOW() + INTERVAL 240 MINUTE, `ip` = :ip, `agent` = :agent;";
 			$qp = $this->pdoDB->prepare($query);
 			$qr = [
 				'userID'    => $userData->ID,
@@ -109,7 +109,7 @@ class SessionHandler {
 			$qp->execute(["uID" => $userData->ID]);
 			
 			setcookie($this->cookieName, $hashT,[
-				'expires' => time() + 3600*2,
+				'expires' => time() + 3600*5,
 				'path' => '/',
 				'domain' => strtok($_SERVER['HTTP_HOST'], ':'),
 				'secure' => ($_SERVER['HTTP_HOST'] == "on") ? true : false,

@@ -15,9 +15,9 @@ class ListingAPI extends DepAPI {
 			echo json_encode(["response" => $categs, "success" => $bool]);
 		}, "methods" => ["GET" => true], "params" => []];
 		
-        $this->fn["category"] = ["fn" => function(){
+        $this->fn["games"] = ["fn" => function(){
             $cat = $_GET["cat"] ?? 0;
-            [$categs, $bool] = $this->mainLogic->getCategory($cat);
+            [$categs, $bool] = $this->mainLogic->getCategoryGames($cat);
 			echo json_encode(["response" => $categs, "success" => $bool]);
 		}, "methods" => ["GET" => true], "params" => []];
 	}
