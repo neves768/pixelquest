@@ -48,7 +48,7 @@
                     <div class="swiper-slide text-center pb-3">
                         <div class="image-circle">
                             <figure class="background">
-                                <img src="img/image-2.jpg" alt="">
+                                <img src="/assets/img/game/euplayers.png" alt="">
                             </figure>
                             <div class="icon icon-100 bg-dark text-white">
                                 <svg xmlns='http://www.w3.org/2000/svg' class="icon-size-48" viewBox='0 0 512 512'>
@@ -59,7 +59,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <h4 class="mt-0 mb-3">Best Houses & Villa</h4>
+                        <h4 class="mt-0 mb-3">Pixel game</h4>
                         <div class="row mb-3">
                             <div class="col-10 mx-auto">
                                 <p class="small-font text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -69,7 +69,7 @@
                     <div class="swiper-slide text-center pb-3">
                         <div class="image-circle">
                             <figure class="background">
-                                <img src="img/image-3.jpg" alt="">
+                                <img src="/assets/img/game/brtm.png" alt="">
                             </figure>
                             <div class="icon icon-100 bg-dark text-white">
                                 <svg xmlns='http://www.w3.org/2000/svg' class="icon-size-48" viewBox='0 0 512 512'>
@@ -82,7 +82,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <h4 class="mt-0 mb-3">Book Rooms</h4>
+                        <h4 class="mt-0 mb-3">Variety of games</h4>
                         <div class="row mb-3">
                             <div class="col-10 mx-auto">
                                 <p class="small-font text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

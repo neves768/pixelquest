@@ -112,8 +112,8 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="product-image-large">
-                                    <div class="background">
-                                        <img :src="game.icon" alt="">
+                                    <div class="">
+                                        <img :src="game.icon" alt="" style="width:100%;">
                                     </div>
                                     <div class="tag-images-count text-white bg-dark">
                                         <svg xmlns='http://www.w3.org/2000/svg' class="icon-size-16 vm" viewBox='0 0 512 512'>
@@ -134,7 +134,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <a href="property-details.html" class="card-footer">
+                            <a :href="'/game?id='+game.ID" class="card-footer">
                                 <div class="row">
                                     <div class="col">
                                         <p class="text-dark">{{game.name}}</p>
@@ -209,7 +209,7 @@
                                     </div>
                                     <div class="col-auto ml-auto">
                                         <p class="small text-secondary">
-                                            3BHK House<br>2400 sq. ft.
+                                            
                                         </p>
                                     </div>
 
@@ -266,7 +266,7 @@
                                 <div class="col pl-0">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="small"><a href="property-details.html" class="text-dark">{{game.name}}</a> </p>
+                                            <p class="small"><a :href="'/game?id='+game.ID" class="text-dark">{{game.name}}</a> </p>
                                         </div>
                                         <div class="col-auto">
                                             <p class="small vm">
@@ -414,16 +414,6 @@
                 selectedCateg: "1",
             },
             methods: {
-                translt: function(str){
-                    str = JSON.parse(str)
-                    if(str.hasOwnProperty(navigator.language)){
-                        return str[navigator.language]
-                    } else if(str.hasOwnProperty("en")){
-                        return str["en"]
-                    } else {
-                        return "_trnx"
-                    }
-                },
                 openCat: function(cat){
                     var _e = this
                     fetch("/API/LIST/games?cat="+cat,{

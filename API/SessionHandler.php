@@ -84,6 +84,11 @@ class SessionHandler {
 		return false;
 	}
 
+
+    public function deleteSession($tempAc){
+        
+    }
+
 	public function createSession($userData, $ip){
 		$tempAc = $this->isSessionValid();
 		if(!$tempAc){

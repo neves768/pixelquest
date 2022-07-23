@@ -6,12 +6,12 @@
 <body class="body-scroll d-flex flex-column h-100 menu-overlay">
     <?php include("cmp/leftmenu.html") ?>
 
-    <main class="flex-shrink-0">
+    <main class="flex-shrink-0" id="gameMain">
         <?php include("cmp/top.html") ?>
 
         <div class="product-image-top">
-            <div class="background" style="background-image: url(_img/image-3.html);">
-                <img src="img/image-3.jpg" alt="" style="display: none;">
+            <div class="background" :style="'background-image: url('+image+');'">
+                <img :src="image" alt="" style="display: none;">
             </div>
             <div class="tag-images-count text-white bg-dark">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-size-16 vm" viewBox="0 0 512 512">
@@ -22,7 +22,7 @@
                     <path d="M342.15,372.17,255,285.78a30.93,30.93,0,0,0-42.18-1.21L96,387.64" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
                     <path d="M265.23,464,383.82,346.27a31,31,0,0,1,41.46-1.87L496,402.91" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
                 </svg>
-                <span class="vm">10</span>
+                <span class="vm">{{game.rounds}} rodadas</span>
             </div>
             <div class="small-btn-wrap">
                 <button class="small-btn btn btn-info text-white mr-2">
@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <p>Exoticasi Duplex </p>
+                            <p>{{game.name}} </p>
                         </div>
                         <div class="col-auto">
                             <p class="small text-secondary">
@@ -64,17 +64,17 @@
                     <div class="row">
                         <div class="col">
                             <p class="small vm">
-                                <span class=" text-secondary">4.5</span>
+                                <span class=" text-secondary">5</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-size-12 vm" viewBox="0 0 24 24">
                                     <path d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M0 0h24v24H0z" fill="none"></path>
                                     <path fill="#FFD500" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
                                 </svg>
-                                <span class=" text-secondary">| Canada</span>
+                                <span class=" text-secondary">| Publisher: {{game.owner}}</span>
                             </p>
                         </div>
                         <div class="col-auto">
-                            <p class="small text-secondary">$ 12.5 lacs</p>
+                            <p class="small text-secondary">{{game.listingType == 0 ? 'Privado' : (game.listingType == 1 ? 'Não listado' : "Público") }}</p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                                 <line x1="64" y1="192" x2="80" y2="192" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line>
                                 <path d="M78,211s46.35-12,178-12,178,12,178,12" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
                             </svg>
-                            <p class="small"><small>Parking</small></p>
+                            <p class="small"><small>Car</small></p>
                         </div>
                         <div class="col-auto text-dark text-center pl-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon-size-24" viewBox="0 0 512 512">
@@ -111,80 +111,19 @@
                                 <polyline points="200 320 172 368 200.37 439.5" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline>
                                 <line x1="101.63" y1="368" x2="172" y2="368" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line>
                             </svg>
-                            <p class="small"><small>Sport</small></p>
-                        </div>
-                        <div class="col-auto text-dark text-center pl-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-size-24" viewBox="0 0 512 512">
-                                <title>ionicons-v5-n</title>
-                                <path d="M215.08,156.92c-4.89-24-10.77-56.27-10.77-73.23A51.36,51.36,0,0,1,256,32h0c28.55,0,51.69,23.69,51.69,51.69,0,16.5-5.85,48.95-10.77,73.23" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M215.08,355.08c-4.91,24.06-10.77,56.16-10.77,73.23A51.36,51.36,0,0,0,256,480h0c28.55,0,51.69-23.69,51.69-51.69,0-16.54-5.85-48.93-10.77-73.23" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M355.08,215.08c24.06-4.91,56.16-10.77,73.23-10.77A51.36,51.36,0,0,1,480,256h0c0,28.55-23.69,51.69-51.69,51.69-16.5,0-48.95-5.85-73.23-10.77" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M156.92,215.07c-24-4.89-56.25-10.76-73.23-10.76A51.36,51.36,0,0,0,32,256h0c0,28.55,23.69,51.69,51.69,51.69,16.5,0,48.95-5.85,73.23-10.77" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M296.92,156.92c13.55-20.48,32.3-47.25,44.37-59.31a51.35,51.35,0,0,1,73.1,0h0c20.19,20.19,19.8,53.3,0,73.1-11.66,11.67-38.67,30.67-59.31,44.37" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M156.92,296.92c-20.48,13.55-47.25,32.3-59.31,44.37a51.35,51.35,0,0,0,0,73.1h0c20.19,20.19,53.3,19.8,73.1,0,11.67-11.66,30.67-38.67,44.37-59.31" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M355.08,296.92c20.48,13.55,47.25,32.3,59.31,44.37a51.35,51.35,0,0,1,0,73.1h0c-20.19,20.19-53.3,19.8-73.1,0-11.69-11.69-30.66-38.65-44.37-59.31" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <path d="M215.08,156.92c-13.53-20.43-32.38-47.32-44.37-59.31a51.35,51.35,0,0,0-73.1,0h0c-20.19,20.19-19.8,53.3,0,73.1,11.61,11.61,38.7,30.68,59.31,44.37" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></path>
-                                <circle cx="256" cy="256" r="64" style="fill:none;stroke:#000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></circle>
-                            </svg>
-                            <p class="small"><small>Garden</small></p>
-                        </div>
-                        <div class="col-auto ml-auto">
-                            <p class="small text-secondary">
-                                3BHK House<br>2400 sq. ft.
-                            </p>
+                            <p class="small"><small>Sports</small></p>
                         </div>
 
                     </div>
                 </div>
                 <div class="card-body border-top border-color">
-                    <p class="small text-secondary">1124 Calvin Street, Keeseville,<br>NY 12924</p>
-                    <!-- map -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1674.9494684683343!2d-1.458484208354475!3d53.580323542286514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1598610506292!5m2!1sen!2sin" class="map-box mb-4" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-                    <h6>Services</h6>
-                    <ul class="text-secondary small lists">
-                        <li>Anti-termite treatment</li>
-                        <li>Internal Street Lights</li>
-                        <li>Restaurant</li>
-                        <li>Solar Water Heating</li>
-                    </ul>
-
-                    <h6>Entertainment and Socializing</h6>
-                    <div class="row">
-                        <div class="col-6">
-                            <ul class="text-secondary small lists">
-                                <li>Banquet Hall</li>
-                                <li>Bar/Chill-Out </li>
-                                <li>Billiards</li>
-                                <li>Card Room</li>
-                                <li>Carrom</li>
-                                <li>Conference room</li>
-                                <li>Foosball</li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul class="text-secondary small lists">
-                                <li>Jacuzzi</li>
-                                <li>Mini Theatre</li>
-                                <li>Multipurpose Hall</li>
-                                <li>Party Lawn</li>
-                                <li>Pool Table</li>
-                                <li>Citizen Sitoutv</li>
-                                <li>Theatre</li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    <h6>Builder information</h6>
+                    <h6>Description</h6>
                     <div class="text-secondary">
-                        <p class="mb-1">Everest Buildcon</p>
-                        <p class="small">A heaven of luxury & superior living set a usual concept of creating an awesome life system around</p>
-                        <p class="mb-1">Address:</p>
-                        <p class="small">ORBIT 9414, At Post Mirzapur, Next to Raval United States.</p>
+                        <p class="mb-1">{{game.description}}</p>
+                        
                     </div>
                     
-                    <a href="buynow.html" class="mt-4 btn btn-info btn-block btn-lg">Buy Now</a>
+                    <a href="buynow.html" class="mt-4 btn btn-info btn-block btn-lg">Jogar</a>
                 </div>
             </div>
         </div>
@@ -196,7 +135,7 @@
         <ion-icon name="add-circle" style="height: 100%;width: 100%;"></ion-icon>
     </button>
 
-
+    
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -216,6 +155,66 @@
         $(window).on('load', function() {
 
         });
+
+        const homeVue = new Vue({
+            name: 'gameMain',
+            el: '#gameMain',
+            data: {
+                game: {},
+                currentRound: {},
+                image: "",
+                selectedCateg: "1",
+            },
+            methods: {
+                loadRound: function(gameID, round){
+                    var _e = this
+                    fetch("/API/GAM/round?id="+<?=$_GET['id'] ?? -1?>+"&round=1",{
+                        headers : { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                        },
+                        cache: "reload"
+                    })
+                    .then(function(response){
+                        return response.json();
+                    })
+                    .then(function(json) {
+                        if(json.success){
+                            _e.currentRound = json.response
+                        } else {
+                            if(json.response.includes("Not auth")){
+                                location.href = "/login"
+                            }
+                        }
+                    });
+                    _e.image = '/API/GAM/image?id=<?=$_GET['id'] ?? -1?>&round=1'
+                }
+            },
+            created() {
+                var _e = this
+                fetch("/API/GAM/gameDt?id="+<?=$_GET['id'] ?? -1?>,{
+                    headers : { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    cache: "reload"
+                })
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(json) {
+                    if(json.success){
+                        _e.game = json.response
+                    } else {
+                        if(json.response.includes("Not auth")){
+                            location.href = "/login"
+                        }
+                    }
+                    $("#mygames").prop("checked", true);
+                });
+                _e.loadRound('<?=$_GET['id'] ?? -1?>', '0')
+            }
+        })
     </script>
 </body>
 </html>
