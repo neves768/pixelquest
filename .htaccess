@@ -10,7 +10,7 @@
     </IfModule>
 	Options -Indexes
 	RewriteEngine On
-	RewriteBase /pixelquest/
+	RewriteBase /
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	
@@ -21,6 +21,7 @@
 	RewriteRule ^signup$ signup.php [NC,L]
 	RewriteRule ^profile$ profile.php [NC,L]
 	RewriteRule ^game$ gamePage.php [NC,L]
+	RewriteRule ^round$ roundPage.php [NC,L]
     
 	# API v2
 	RewriteRule ^API/([A-Z]{1,4})/(.*)$ API/init.php?branch=$1&path=$2 [QSA]
